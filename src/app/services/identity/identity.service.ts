@@ -16,11 +16,11 @@ import {
   VaultErrorCodes
 } from '@ionic-enterprise/identity-vault';
 
-import { environment } from '../../../environments/environment';
-import { User } from '../../models/user';
+import { environment } from '@env/environment';
+import { User } from '@app/models';
 import { BrowserAuthPlugin } from '../browser-auth/browser-auth.plugin';
-import { PinDialogComponent } from '../../pin-dialog/pin-dialog.component';
 import { SettingsService } from '../settings/settings.service';
+import { PinDialogComponent } from '@app/pin-dialog/pin-dialog.component';
 
 @Injectable({
   providedIn: 'root'

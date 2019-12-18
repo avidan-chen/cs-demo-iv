@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
-import { TeaCategoriesService } from '../services/tea-categories';
+import { TeaCategoriesService } from '@app/services/';
 
 @Component({
   selector: 'app-edit-tea-category',

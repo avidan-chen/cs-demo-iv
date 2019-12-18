@@ -3,15 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NavController } from '@ionic/angular';
 
 import { HomePage } from './home.page';
-import {
-  createAuthenticationServiceMock,
-  AuthenticationService
-} from '../services/authentication';
-import { createNavControllerMock } from '../../../test/mocks';
-import {
-  createTeaCategoriesServiceMock,
-  TeaCategoriesService
-} from '../services/tea-categories';
+import { AuthenticationService, TeaCategoriesService } from '@app/services';
+import { createNavControllerMock } from '@test/mocks';
+import { createAuthenticationServiceMock, createTeaCategoriesServiceMock } from '@app/services/mocks';
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -43,5 +37,13 @@ describe('HomePage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('logout', () => {
+    it('calls the logout', () => {
+      const auth = TestBed.get(AuthenticationService);
+      component.logout();
+      expect(auth.logout).toHaveBeenCalledTimes(1);
+    });
   });
 });

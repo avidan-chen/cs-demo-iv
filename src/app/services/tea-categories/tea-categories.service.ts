@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { flatMap, tap } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
-import { TeaCategory } from '../../models/tea-category';
+import { environment } from '@env/environment';
+import { TeaCategory } from '@app/models';
 
 @Injectable({
   providedIn: 'root'

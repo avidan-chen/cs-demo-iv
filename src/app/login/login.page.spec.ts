@@ -1,27 +1,15 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {
-  async,
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick
-} from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, NavController } from '@ionic/angular';
 import { AuthMode } from '@ionic-enterprise/identity-vault';
 
 import { of } from 'rxjs';
 
-import {
-  AuthenticationService,
-  createAuthenticationServiceMock
-} from '../services/authentication';
-import {
-  IdentityService,
-  createIdentityServiceMock
-} from '../services/identity';
+import { AuthenticationService, IdentityService } from '@app/services';
+import { createAuthenticationServiceMock, createIdentityServiceMock } from '@app/services/mocks';
 import { LoginPage } from './login.page';
-import { createNavControllerMock } from '../../../test/mocks';
+import { createNavControllerMock } from '@test/mocks';
 
 describe('LoginPage', () => {
   let authentication;
@@ -125,9 +113,7 @@ describe('LoginPage', () => {
 
       describe('when the token is non-blank', () => {
         beforeEach(() => {
-          identity.restoreSession.and.returnValue(
-            Promise.resolve({ token: 'I am a stored token' })
-          );
+          identity.restoreSession.and.returnValue(Promise.resolve({ token: 'I am a stored token' }));
         });
 
         it('navigates home', async () => {
@@ -156,10 +142,7 @@ describe('LoginPage', () => {
       component.email = 'jimmy@test.org';
       component.password = 'I Crack the Corn';
       component.signInClicked();
-      expect(authentication.login).toHaveBeenCalledWith(
-        'jimmy@test.org',
-        'I Crack the Corn'
-      );
+      expect(authentication.login).toHaveBeenCalledWith('jimmy@test.org', 'I Crack the Corn');
     });
 
     describe('on success', () => {
@@ -203,9 +186,7 @@ describe('LoginPage', () => {
 
       it('displays an error message', () => {
         component.signInClicked();
-        expect(component.errorMessage).toEqual(
-          'Invalid e-mail address or password'
-        );
+        expect(component.errorMessage).toEqual('Invalid e-mail address or password');
       });
 
       it('does not navigate', () => {

@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 
-import { AuthenticationService } from '../services/authentication';
-import { TeaCategory } from '../models/tea-category';
-import { TeaCategoriesService } from '../services/tea-categories';
+import { AuthenticationService, TeaCategoriesService } from '@app/services';
+import { TeaCategory } from '@app/models';
 
 @Component({
   selector: 'app-home',

@@ -6,7 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
-import { createIdentityServiceMock, IdentityService } from './services/identity';
+import { IdentityService } from '@app/services';
+import { createIdentityServiceMock} from '@app/services/mocks';
 
 describe('AppComponent', () => {
   let identity;

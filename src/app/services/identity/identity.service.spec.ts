@@ -13,13 +13,10 @@ import {
   createPlatformMock,
   createRouterMock,
   createStorageMock
-} from '../../../../test/mocks';
-import { environment } from '../../../environments/environment';
-import { BrowserAuthPlugin } from '../browser-auth/browser-auth.plugin';
-import { BrowserAuthService } from '../browser-auth/browser-auth.service';
-import { IdentityService } from './identity.service';
-import { SettingsService } from '../settings/settings.service';
-import { createSettingsServiceMock } from '../settings/settings.mock';
+} from '@test/mocks';
+import { environment } from '@env/environment';
+import { BrowserAuthPlugin, BrowserAuthService, IdentityService, SettingsService } from '@app/services';
+import { createSettingsServiceMock } from '@app/services/mocks';
 
 describe('IdentityService', () => {
   let httpTestingController: HttpTestingController;

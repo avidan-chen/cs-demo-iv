@@ -3,14 +3,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IonicModule, NavController } from '@ionic/angular';
-
-import { createActivatedRouteMock, createNavControllerMock } from '../../../test/mocks';
-import { EditTeaCategoryPage } from './edit-tea-category.page';
-import {
-  TeaCategoriesService,
-  createTeaCategoriesServiceMock
-} from '../services/tea-categories';
 import { of } from 'rxjs';
+
+import { createActivatedRouteMock, createNavControllerMock } from '@test/mocks';
+import { EditTeaCategoryPage } from './edit-tea-category.page';
+import { TeaCategoriesService} from '@app/services';
+import{ createTeaCategoriesServiceMock } from '@app/services/mocks';
 
 describe('EditTeaCategoryPage', () => {
   let component: EditTeaCategoryPage;

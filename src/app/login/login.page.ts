@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
-import { AuthenticationService } from '../services/authentication';
-import { IdentityService } from '../services/identity';
+import { AuthenticationService, IdentityService } from '@app/services';
 import { AuthMode } from '@ionic-enterprise/identity-vault';
 
 @Component({

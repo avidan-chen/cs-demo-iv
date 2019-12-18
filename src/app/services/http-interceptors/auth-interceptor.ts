@@ -8,7 +8,7 @@ import {
   HttpRequest
 } from '@angular/common/http';
 
-import { IdentityService } from '../identity';
+import { IdentityService } from '@app/services';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

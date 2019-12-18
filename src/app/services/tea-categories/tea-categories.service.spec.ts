@@ -4,11 +4,11 @@ import {
   HttpTestingController
 } from '@angular/common/http/testing';
 
-import { TeaCategory } from '../../models/tea-category';
+import { TeaCategory } from '@app/models';
 import { TeaCategoriesService } from './tea-categories.service';
 
-import { deepCopy } from '../../../../test/util';
-import { environment } from '../../../environments/environment';
+import { deepCopy } from '@test/util';
+import { environment } from '@env/environment';
 import { testTeaCategories } from './tea-categories.test-data';
 
 describe('TeaCategoriesService', () => {

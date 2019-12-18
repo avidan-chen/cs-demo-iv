@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AuthMode } from '@ionic-enterprise/identity-vault';
 
-import { AuthenticationService } from '../services/authentication';
-import { IdentityService } from '../services/identity';
-import { User } from '../models/user';
+import { AuthenticationService, IdentityService } from '@app/services';
+import { User } from '@app/models';
 
 @Component({
   selector: 'app-about',

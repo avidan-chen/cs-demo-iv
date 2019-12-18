@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
-import { IdentityService } from '../identity';
-import { User } from '../../models/user';
+import { environment } from '@env/environment';
+import { IdentityService } from '../identity/identity.service';
+import { User } from '@app/models';
 
 @Injectable({
   providedIn: 'root'
