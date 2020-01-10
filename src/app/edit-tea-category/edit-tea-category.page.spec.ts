@@ -7,8 +7,8 @@ import { of } from 'rxjs';
 
 import { createActivatedRouteMock, createNavControllerMock } from '@test/mocks';
 import { EditTeaCategoryPage } from './edit-tea-category.page';
-import { TeaCategoriesService} from '@app/services';
-import{ createTeaCategoriesServiceMock } from '@app/services/mocks';
+import { TeaCategoriesService } from '@app/services';
+import { createTeaCategoriesServiceMock } from '@app/services/mocks';
 
 describe('EditTeaCategoryPage', () => {
   let component: EditTeaCategoryPage;
@@ -107,9 +107,9 @@ describe('EditTeaCategoryPage', () => {
       component.save();
       expect(cats.save).toHaveBeenCalledTimes(1);
       expect(cats.save).toHaveBeenCalledWith({
-          id: 42,
-          name: 'Anthony',
-          description: 'A clockwork orange pekoe'
+        id: 42,
+        name: 'Anthony',
+        description: 'A clockwork orange pekoe'
       });
     });
 

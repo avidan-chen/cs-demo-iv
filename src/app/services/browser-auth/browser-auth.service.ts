@@ -70,6 +70,14 @@ export class BrowserAuthService implements IdentityVault {
     return this.storage.get(key);
   }
 
+  async removeValue(key: string): Promise<void> {
+    await this.storage.remove(key);
+  }
+
+  getKeys(): Promise<Array<string>> {
+    return this.storage.keys();
+  }
+
   getBiometricType(): Promise<BiometricType> {
     const none: BiometricType = 'none';
     return Promise.resolve(none);
