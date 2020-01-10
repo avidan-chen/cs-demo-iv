@@ -37,7 +37,6 @@ export class IdentityService extends IonicIdentityVaultUser<DefaultSession> {
     private settings: SettingsService
   ) {
     super(plt, {
-      authMode: AuthMode.BiometricAndPasscode,
       restoreSessionOnReady: false,
       unlockOnReady: false,
       unlockOnAccess: true,
@@ -81,11 +80,7 @@ export class IdentityService extends IonicIdentityVaultUser<DefaultSession> {
 
   async getToken(): Promise<string> {
     if (!this.token) {
-      console.log('get token wait for ready (not needed, just testing)');
-      await this.ready();
-      console.log('get token restore session');
       await this.restoreSession();
-      console.log('done');
     }
     return this.token;
   }
