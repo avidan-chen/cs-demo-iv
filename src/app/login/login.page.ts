@@ -23,7 +23,10 @@ export class LoginPage {
     private navController: NavController
   ) {}
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
+    console.log('ima gonna wait...');
+    await this.identity.ready();
+    console.log('ima done waiting...');
     try {
       this.initLoginType();
     } catch (e) {
