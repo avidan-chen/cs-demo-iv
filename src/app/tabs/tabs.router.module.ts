@@ -14,6 +14,11 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+          },
+          {
+            path: 'edit-tea-category',
+            loadChildren: () =>
+              import('../edit-tea-category/edit-tea-category.module').then(m => m.EditTeaCategoryPageModule)
           }
         ]
       },

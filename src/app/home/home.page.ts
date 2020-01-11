@@ -30,6 +30,6 @@ export class HomePage implements OnInit {
   }
 
   editCategory(id: number) {
-    this.navController.navigateForward(['edit-tea-category', id]);
+    this.navController.navigateForward(['tabs', 'home', 'edit-tea-category', id]);
   }
 }
