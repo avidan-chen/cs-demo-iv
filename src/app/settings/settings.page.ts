@@ -52,6 +52,11 @@ export class SettingsPage implements OnInit {
     this.identity.lockOut();
   }
 
+  async reset() {
+    const v = await this.identity.getVault();
+    await v.clear();
+  }
+
   private async setAuthModeFlags() {
     this.usePasscode = await this.identity.isPasscodeEnabled();
     this.useBiometrics = await this.identity.isBiometricsEnabled();
