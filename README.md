@@ -1,12 +1,12 @@
-# Ionic Customer Success Demo - Identity Vault
+# Ionic Customer Success Demo - Identity Vault / Angular
 
-This application shows the use of Ionic's Identity Vault within a mobile application. We assume that you have access to Ioinic's Identity Vault product. If this is not the case, please contact our sales department.
+This reference application shows the use of Ionic's Identity Vault within an Ionic Angular mobile application. We assume that you have access to Ioinic's Identity Vault product. If this is not the case, please contact our sales department.
 
 ## Building
 
 - Clone this repository
 - Follow the [Ionic Native Enterprise Edition Setup instructions](https://ionicframework.com/docs/enterprise#setup) if you have not already done so
-- Follow the [Ionic Native Enterprise Edition Register instructions](https://ionicframework.com/docs/enterprise#setup) from this application's root directory, using they key you have chosen to use for demo applications. If you do not have a key, contact your Ionic sales representative.
+- Follow the [Ionic Native Enterprise Edition Register instructions](https://ionicframework.com/docs/enterprise#setup) from this application's root directory. If you have multiple keys, be sure to choose one that has access to Identity Vault.
 - `npm i`
 - `ionic cordova platform add ios`
 - `npm run build:ios`
