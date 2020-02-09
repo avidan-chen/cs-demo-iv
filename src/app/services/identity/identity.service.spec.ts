@@ -1,19 +1,11 @@
 import { TestBed, inject } from '@angular/core/testing';
-import {
-  HttpClientTestingModule,
-  HttpTestingController
-} from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
 
 import { Platform, ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
-import {
-  createOverlayControllerMock,
-  createPlatformMock,
-  createRouterMock,
-  createStorageMock
-} from '@test/mocks';
+import { createOverlayControllerMock, createPlatformMock, createRouterMock, createStorageMock } from '@test/mocks';
 import { environment } from '@env/environment';
 import { BrowserAuthPlugin, BrowserAuthService, IdentityService, SettingsService } from '@app/services';
 import { createSettingsServiceMock } from '@app/services/mocks';
@@ -23,9 +15,7 @@ describe('IdentityService', () => {
   let identity: IdentityService;
 
   beforeAll(() => {
-    (window as any).IonicNativeAuth = new BrowserAuthPlugin(
-      new BrowserAuthService(createStorageMock())
-    );
+    (window as any).IonicNativeAuth = new BrowserAuthPlugin(new BrowserAuthService(createStorageMock()));
   });
 
   beforeEach(() => {
@@ -44,7 +34,7 @@ describe('IdentityService', () => {
       ]
     });
 
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   beforeEach(inject([IdentityService], (service: IdentityService) => {
@@ -65,9 +55,7 @@ describe('IdentityService', () => {
           email: 'thank.you@forthefish.com'
         })
       );
-      const req = httpTestingController.expectOne(
-        `${environment.dataService}/users/current`
-      );
+      const req = httpTestingController.expectOne(`${environment.dataService}/users/current`);
       expect(req.request.method).toEqual('GET');
       req.flush({
         id: 42,
@@ -87,9 +75,7 @@ describe('IdentityService', () => {
           email: 'thank.you@forthefish.com'
         })
       );
-      const req = httpTestingController.expectOne(
-        `${environment.dataService}/users/current`
-      );
+      const req = httpTestingController.expectOne(`${environment.dataService}/users/current`);
       expect(req.request.method).toEqual('GET');
       req.flush({
         id: 42,
@@ -136,9 +122,7 @@ describe('IdentityService', () => {
   describe('remove', () => {
     beforeEach(() => {
       identity.get().subscribe();
-      const req = httpTestingController.expectOne(
-        `${environment.dataService}/users/current`
-      );
+      const req = httpTestingController.expectOne(`${environment.dataService}/users/current`);
       expect(req.request.method).toEqual('GET');
       req.flush({
         id: 42,
@@ -155,9 +139,7 @@ describe('IdentityService', () => {
       httpTestingController.verify();
       await identity.remove();
       identity.get().subscribe();
-      const req = httpTestingController.expectOne(
-        `${environment.dataService}/users/current`
-      );
+      const req = httpTestingController.expectOne(`${environment.dataService}/users/current`);
       expect(req.request.method).toEqual('GET');
       req.flush({
         id: 42,
@@ -171,7 +153,7 @@ describe('IdentityService', () => {
 
   describe('on vault locked', () => {
     it('navigates to the login page', () => {
-      const router = TestBed.get(Router);
+      const router = TestBed.inject(Router);
       identity.onVaultLocked();
       expect(router.navigate).toHaveBeenCalledTimes(1);
       expect(router.navigate).toHaveBeenCalledWith(['login']);

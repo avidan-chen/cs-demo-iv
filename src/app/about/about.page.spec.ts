@@ -37,27 +37,27 @@ describe('AboutPage', () => {
     expect(component).toBeTruthy();
   });
 
-   describe('init', () => {
-     it('gets the auth mode', async () => {
-       const identityService = TestBed.get(IdentityService);
-       identityService.getAuthMode.and.returnValue(Promise.resolve(AuthMode.InMemoryOnly));
-       await component.ionViewDidEnter();
-       expect(identityService.getAuthMode).toHaveBeenCalledTimes(1);
-       expect(component.authMode).toEqual('InMemoryOnly');
-     });
+  describe('init', () => {
+    it('gets the auth mode', async () => {
+      const identityService = TestBed.inject(IdentityService);
+      (identityService as any).getAuthMode.and.returnValue(Promise.resolve(AuthMode.InMemoryOnly));
+      await component.ionViewDidEnter();
+      expect(identityService.getAuthMode).toHaveBeenCalledTimes(1);
+      expect(component.authMode).toEqual('InMemoryOnly');
+    });
 
-     it('gets the auth mode', async () => {
-       const vaultService = TestBed.get(IdentityService);
-       vaultService.getBiometricType.and.returnValue(Promise.resolve('FaceID'));
-       await component.ionViewDidEnter();
-       expect(vaultService.getBiometricType).toHaveBeenCalledTimes(1);
-       expect(component.bioType).toEqual('FaceID');
-     });
-   });
+    it('gets the auth mode', async () => {
+      const vaultService = TestBed.inject(IdentityService);
+      (vaultService as any).getBiometricType.and.returnValue(Promise.resolve('FaceID'));
+      await component.ionViewDidEnter();
+      expect(vaultService.getBiometricType).toHaveBeenCalledTimes(1);
+      expect(component.bioType).toEqual('FaceID');
+    });
+  });
 
   describe('logout', () => {
     it('calls the logout', () => {
-      const auth = TestBed.get(AuthenticationService);
+      const auth = TestBed.inject(AuthenticationService);
       component.logout();
       expect(auth.logout).toHaveBeenCalledTimes(1);
     });

@@ -19,7 +19,7 @@ describe('AuthenticationService', () => {
       providers: [AuthenticationService, { provide: IdentityService, useValue: identity }]
     });
 
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   beforeEach(inject([AuthenticationService], (service: AuthenticationService) => {

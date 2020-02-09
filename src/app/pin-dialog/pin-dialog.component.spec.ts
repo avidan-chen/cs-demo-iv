@@ -181,7 +181,7 @@ describe('PinDialogComponent', () => {
 
       describe('first call', () => {
         it('does not dismiss', () => {
-          const modalController = TestBed.get(ModalController);
+          const modalController = TestBed.inject(ModalController);
           component.pin = '88395';
           component.enter();
           expect(modalController.dismiss).not.toHaveBeenCalled();
@@ -213,12 +213,12 @@ describe('PinDialogComponent', () => {
           });
 
           it('dismisses if the dialog', () => {
-            const modalController = TestBed.get(ModalController);
+            const modalController = TestBed.inject(ModalController);
             expect(modalController.dismiss).toHaveBeenCalledTimes(1);
           });
 
           it('returns the PIN', () => {
-            const modalController = TestBed.get(ModalController);
+            const modalController = TestBed.inject(ModalController);
             expect(modalController.dismiss).toHaveBeenCalledWith('88395');
           });
         });
@@ -230,7 +230,7 @@ describe('PinDialogComponent', () => {
           });
 
           it('does not close the modal', () => {
-            const modalController = TestBed.get(ModalController);
+            const modalController = TestBed.inject(ModalController);
             expect(modalController.dismiss).not.toHaveBeenCalled();
           });
 
@@ -256,13 +256,13 @@ describe('PinDialogComponent', () => {
       });
 
       it('dismisses the dialog', () => {
-        const modalController = TestBed.get(ModalController);
+        const modalController = TestBed.inject(ModalController);
         component.enter();
         expect(modalController.dismiss).toHaveBeenCalledTimes(1);
       });
 
       it('passes back the entered PIN', () => {
-        const modalController = TestBed.get(ModalController);
+        const modalController = TestBed.inject(ModalController);
         component.pin = '88395';
         component.enter();
         expect(modalController.dismiss).toHaveBeenCalledWith('88395');

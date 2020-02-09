@@ -41,7 +41,7 @@ describe('HomePage', () => {
 
   describe('logout', () => {
     it('calls the logout', () => {
-      const auth = TestBed.get(AuthenticationService);
+      const auth = TestBed.inject(AuthenticationService);
       component.logout();
       expect(auth.logout).toHaveBeenCalledTimes(1);
     });

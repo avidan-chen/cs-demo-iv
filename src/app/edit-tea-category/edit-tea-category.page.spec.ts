@@ -41,26 +41,26 @@ describe('EditTeaCategoryPage', () => {
 
   describe('on init', () => {
     it('determines the ID from the route', () => {
-      const route = TestBed.get(ActivatedRoute);
+      const route = TestBed.inject(ActivatedRoute);
       fixture.detectChanges();
       expect(route.snapshot.paramMap.get).toHaveBeenCalledTimes(1);
       expect(route.snapshot.paramMap.get).toHaveBeenCalledWith('id');
     });
 
     it('gets the category for the ID', () => {
-      const route = TestBed.get(ActivatedRoute);
-      const cats = TestBed.get(TeaCategoriesService);
-      route.snapshot.paramMap.get.and.returnValue('42');
+      const route = TestBed.inject(ActivatedRoute);
+      const cats = TestBed.inject(TeaCategoriesService);
+      (route as any).snapshot.paramMap.get.and.returnValue('42');
       fixture.detectChanges();
       expect(cats.get).toHaveBeenCalledTimes(1);
       expect(cats.get).toHaveBeenCalledWith(42);
     });
 
     it('sets the name', () => {
-      const route = TestBed.get(ActivatedRoute);
-      const cats = TestBed.get(TeaCategoriesService);
-      route.snapshot.paramMap.get.and.returnValue('42');
-      cats.get.and.returnValue(
+      const route = TestBed.inject(ActivatedRoute);
+      const cats = TestBed.inject(TeaCategoriesService);
+      (route as any).snapshot.paramMap.get.and.returnValue('42');
+      (cats as any).get.and.returnValue(
         of({
           id: 42,
           name: 'Doug',
@@ -72,10 +72,10 @@ describe('EditTeaCategoryPage', () => {
     });
 
     it('sets the description', () => {
-      const route = TestBed.get(ActivatedRoute);
-      const cats = TestBed.get(TeaCategoriesService);
-      route.snapshot.paramMap.get.and.returnValue('42');
-      cats.get.and.returnValue(
+      const route = TestBed.inject(ActivatedRoute);
+      const cats = TestBed.inject(TeaCategoriesService);
+      (route as any).snapshot.paramMap.get.and.returnValue('42');
+      (cats as any).get.and.returnValue(
         of({
           id: 42,
           name: 'Doug',
@@ -89,8 +89,8 @@ describe('EditTeaCategoryPage', () => {
 
   describe('save', () => {
     beforeEach(() => {
-      const cats = TestBed.get(TeaCategoriesService);
-      cats.get.and.returnValue(
+      const cats = TestBed.inject(TeaCategoriesService);
+      (cats as any).get.and.returnValue(
         of({
           id: 42,
           name: 'Doug',
@@ -101,7 +101,7 @@ describe('EditTeaCategoryPage', () => {
     });
 
     it('saves changes to the name and description', () => {
-      const cats = TestBed.get(TeaCategoriesService);
+      const cats = TestBed.inject(TeaCategoriesService);
       component.name = 'Anthony';
       component.description = 'A clockwork orange pekoe';
       component.save();
@@ -114,7 +114,7 @@ describe('EditTeaCategoryPage', () => {
     });
 
     it('navigates back home', () => {
-      const nav = TestBed.get(NavController);
+      const nav = TestBed.inject(NavController);
       component.save();
       expect(nav.back).toHaveBeenCalledTimes(1);
     });

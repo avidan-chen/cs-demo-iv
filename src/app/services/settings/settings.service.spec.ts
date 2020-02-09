@@ -11,8 +11,8 @@ describe('SettingsService', () => {
     TestBed.configureTestingModule({
       providers: [{ provide: Storage, useFactory: createStorageMock }]
     });
-    storage = TestBed.get(Storage);
-    service = TestBed.get(SettingsService);
+    storage = TestBed.inject(Storage);
+    service = TestBed.inject(SettingsService);
   });
 
   it('should be created', () => {
