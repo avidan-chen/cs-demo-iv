@@ -24,6 +24,7 @@ www/
 node_modules/
 tmp/
 temp/
+test/__ngcc_entry_points__.json
 platforms/
 plugins/
 plugins/android.json

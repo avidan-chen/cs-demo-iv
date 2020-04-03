@@ -19,7 +19,7 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
-    <preference name="UseSwiftLanguageVersion" value="4.2" />
+    <preference name="UseSwiftLanguageVersion" value="5" />
     <preference name="WKPort" value="3200" />
     <allow-navigation href="http://localhost:3200/*" />
     <platform name="android">
