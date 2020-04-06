@@ -14,17 +14,21 @@ export class AboutPage {
   user: User;
   authMode: string;
   bioType: string;
+  hasStoredSession: boolean;
+  isLocked: boolean;
 
   constructor(
     private authentication: AuthenticationService,
     private identity: IdentityService,
     private navController: NavController
-  ) {}
+  ) { }
 
   async ionViewDidEnter() {
     this.identity.get().subscribe(u => (this.user = u));
     this.authMode = AuthMode[await this.identity.getAuthMode()];
     this.bioType = await this.identity.getBiometricType();
+    this.hasStoredSession = await this.identity.hasStoredSession();
+    this.isLocked = await this.identity.isLocked();
   }
 
   logout() {

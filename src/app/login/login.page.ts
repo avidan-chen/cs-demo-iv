@@ -17,15 +17,20 @@ export class LoginPage {
   loginType: string;
   displayVaultLogin: boolean;
 
+  hasStoredSession: boolean;
+  isLocked: boolean;
+
   constructor(
     private authentication: AuthenticationService,
     private identity: IdentityService,
     private navController: NavController
-  ) {}
+  ) { }
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
     try {
       this.initLoginType();
+      this.hasStoredSession = await this.identity.hasStoredSession();
+      this.isLocked = await this.identity.isLocked();
     } catch (e) {
       console.error('Unable to check token status', e);
     }

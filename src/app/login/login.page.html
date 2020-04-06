@@ -17,9 +17,8 @@
       </ion-item>
     </ion-list>
 
-    <ion-button expand="full" [disabled]="!loginForm.form.valid" (click)="signInClicked()" color="tertiary"
-      >Sign in</ion-button
-    >
+    <ion-button expand="full" [disabled]="!loginForm.form.valid" (click)="signInClicked()" color="tertiary">Sign in
+    </ion-button>
     <div class="unlock-app ion-text-center" *ngIf="displayVaultLogin" (click)="unlockClicked()">
       <ion-icon name="lock-open"></ion-icon>
       <div>{{ loginType }}</div>
@@ -36,3 +35,14 @@
     </div>
   </form>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Has Stored Session: {{hasStoredSession}}</ion-title>
+  </ion-toolbar>
+</ion-footer>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Is Locked: {{isLocked}}</ion-title>
+  </ion-toolbar>
+</ion-footer>
