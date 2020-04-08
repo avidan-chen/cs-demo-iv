@@ -57,17 +57,20 @@ describe('LoginPage', () => {
           identity.hasStoredSession.and.returnValue(Promise.resolve(true));
         });
 
-        it('displays the biometric login button', fakeAsync(() => {
-          component.ionViewWillEnter();
-          tick();
-          expect(component.displayVaultLogin).toEqual(true);
-        }));
-
         it('gets the biometric type', fakeAsync(() => {
+          identity.isBiometricsAvailable.and.returnValue(Promise.resolve(true));
           identity.getBiometricType.and.returnValue(Promise.resolve('blood'));
           component.ionViewWillEnter();
           tick();
           expect(component.loginType).toEqual('blood');
+        }));
+
+        it('does not get the biometric type if biometrics is not available', fakeAsync(() => {
+          identity.isBiometricsAvailable.and.returnValue(Promise.resolve(false));
+          identity.getBiometricType.and.returnValue(Promise.resolve('blood'));
+          component.ionViewWillEnter();
+          tick();
+          expect(component.loginType).toEqual('');
         }));
       });
 
@@ -75,12 +78,6 @@ describe('LoginPage', () => {
         beforeEach(() => {
           identity.hasStoredSession.and.returnValue(Promise.resolve(false));
         });
-
-        it('hides the biometric login button', fakeAsync(() => {
-          component.ionViewWillEnter();
-          tick();
-          expect(component.displayVaultLogin).toEqual(false);
-        }));
 
         it('does not get the biometric type', fakeAsync(() => {
           identity.getBiometricType.and.returnValue(Promise.resolve('blood'));
