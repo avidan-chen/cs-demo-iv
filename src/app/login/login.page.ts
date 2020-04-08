@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 import { AuthenticationService, IdentityService } from '@app/services';
-import { AuthMode } from '@ionic-enterprise/identity-vault';
+import { AuthMode, VaultErrorCodes } from '@ionic-enterprise/identity-vault';
 import { DefaultSession } from 'plugins/@ionic-enterprise/identity-vault/dist/esm';
 
 @Component({
@@ -70,16 +70,19 @@ export class LoginPage {
   private async tryRestoreSession(): Promise<DefaultSession> {
     try {
       return await this.identity.restoreSession();
-    } catch (e) {
+    } catch (error) {
       alert('Unable to unlock the token');
       this.setUnlockType();
+      if (error.code !== VaultErrorCodes.AuthFailed) {
+        throw error;
+      }
     }
   }
 
   private async setUnlockType(): Promise<void> {
     const previousLoginType = this.loginType;
     await this.determineLoginType();
-    if (previousLoginType && !this.loginType){
+    if (previousLoginType && !this.loginType) {
       alert('The vault is no longer accessible. Please login again');
     }
   }
