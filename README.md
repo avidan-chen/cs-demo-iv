@@ -5,8 +5,8 @@ This reference application shows the use of Ionic's Identity Vault within an Ion
 ## Building
 
 - Clone this repository
-- Follow the [Ionic Native Enterprise Edition Setup instructions](https://ionicframework.com/docs/enterprise#setup) if you have not already done so
-- Follow the [Ionic Native Enterprise Edition Register instructions](https://ionicframework.com/docs/enterprise#setup) from this application's root directory. If you have multiple keys, be sure to choose one that has access to Identity Vault.
+- Follow the [Ionic Native Enterprise Edition Setup instructions](https://ionicframework.com/docs/enterprise/setup#install-tooling) if you have not already done so
+- Follow the [Ionic Native Enterprise Edition Register instructions](https://ionicframework.com/docs/enterprise/setup#register-your-product-key) from this application's root directory. If you have multiple keys, be sure to choose one that has access to Identity Vault.
 - `npm i`
 - `ionic cordova platform add ios`
 - `npm run build:ios`
